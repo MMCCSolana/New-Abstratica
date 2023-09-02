@@ -263,7 +263,7 @@ export default {
         name: "marketplace",
         disabled: false,
         target: "_blank",
-        href: "https://digitaleyes.market/collections/Abstratica",
+        href: "https://magiceden.io/marketplace/abstratica",
         icon: "mdi-shopping",
       },
     ],
