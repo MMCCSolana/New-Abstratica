@@ -27,6 +27,7 @@ try {
     "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
   );
 } catch (error) {
+  // eslint-disable-next-line
   console.error("Error initializing SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID PublicKey:", error);
 }
 export { SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID };

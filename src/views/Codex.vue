@@ -154,8 +154,7 @@ import AppFooter from "../components/AppFooter.vue";
 import TitleParallax from "../components/TitleParallax.vue";
 import { mapActions, mapState } from "vuex";
 import { decodeSymbolPair, getColowByMaterial, getRating } from "../lib/codex";
-import { getAllRegisteredInfo } from "../lib/name-service";
-import { getTwitterUrl, debounce } from "../lib/util";
+import { getTwitterUrl } from "../lib/util";
 const DisplayOwnerLength = 12;
 
 export default {
@@ -250,25 +249,25 @@ export default {
       this.leaderboards = sortedCollectors;
     },
     // WIP
-    async onFilterdItemChange(items) {
-      // const workItems = items.filter(
-      //   (i) => this.loadedNaming.findIndex((l) => l.owner === i.owner) === -1
-      // );
-      // for (let index = 0; index < workItems.length; index++) {
-      //   const item = workItems[index];
-      //   debounce(() => {
-      //     console.log("in debounce");
-      //     getAllRegisteredInfo(item.owner, true)
-      //       .then((r) => {
-      //         console.log("feched");
-      //         const naming = r;
-      //         naming.owner = item.owner;
-      //         this.loadedNaming.push(naming);
-      //       })
-      //       .catch((e) => {});
-      //   }, 111)();
-      // }
-    },
+    // async onFilterdItemChange(items) {
+    // const workItems = items.filter(
+    //   (i) => this.loadedNaming.findIndex((l) => l.owner === i.owner) === -1
+    // );
+    // for (let index = 0; index < workItems.length; index++) {
+    //   const item = workItems[index];
+    //   debounce(() => {
+    //     console.log("in debounce");
+    //     getAllRegisteredInfo(item.owner, true)
+    //       .then((r) => {
+    //         console.log("feched");
+    //         const naming = r;
+    //         naming.owner = item.owner;
+    //         this.loadedNaming.push(naming);
+    //       })
+    //       .catch((e) => {});
+    //   }, 111)();
+    // }
+    // },
     truncateOwnerAddress(owner) {
       return `${owner.substr(0, DisplayOwnerLength)}... ${owner.substr(
         DisplayOwnerLength * -1,

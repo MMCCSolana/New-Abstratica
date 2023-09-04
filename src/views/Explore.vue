@@ -92,11 +92,11 @@ export default {
   created() {
     this.filterDebounce = debounce(this.setNameFilter, 700, false);
   },
-  watch: {
-    nameFilter(value) {
-      this.filterDebounce();
-    },
-  },
+  // watch: {
+  //   nameFilter(value) {
+  //     this.filterDebounce();
+  //   },
+  // },
   computed: {
     ...mapGetters(["metaReady"]),
     ...mapState({
