@@ -16,7 +16,7 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 const server = require("http").createServer(app);
 server.listen(PORT);
-console.log(`${new Date()} - App started on ${PORT}...`);
+console.log(`${new Date()} - App started on ${PORT}... `);
 
 // middlewares
 if (ssl) {
