@@ -1,13 +1,13 @@
 <template>
   <v-card>
-    <TitleParallax text="The first generative AI art project on Solana. Created Aug 2021" />
+    <TitleParallax text="The first generative AI art project on Solana" />
     <v-card-text class="py-0 pl-0 pr-0">
       <div class="containerbg">
         <v-container fluid>
           <v-row>
             <v-col cols="12">
               <div class="text-center justify-center welcome mb-10 mt-10">
-                <h1>Welcome to {{ appName }}</h1>
+                <h1>Welcome to {{ appName }}, est 2021</h1>
               </div>
             </v-col>
           </v-row>
