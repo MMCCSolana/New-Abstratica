@@ -260,7 +260,7 @@ export default {
         icon: "mdi-book-open-page-variant",
       },
       {
-        name: "marketplace",
+        name: "buy now!",
         disabled: false,
         target: "_blank",
         href: "https://magiceden.io/marketplace/abstratica",
