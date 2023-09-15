@@ -2,7 +2,7 @@ import { programIds } from "./ids.js";
 import { PublicKey } from "@solana/web3.js";
 import { deserializeUnchecked } from "borsh";
 import { METADATA_SCHEMA, Metadata } from "./datalayout.js";
-import { networkConnection, creator } from "../connection";
+import { networkConnection } from "../connection";
 
 export const METADATA_PREFIX = "metadata";
 
@@ -40,7 +40,7 @@ export async function getMetadata(connection, publicKey) {
 
   const decoded = decodeMetadata(accountData.data);
   // do not display other NFT
-  if (decoded.updateAuthority.toBase58() !== creator.toBase58()) return null;
+  // if (decoded.updateAuthority.toBase58() !== creator.toBase58()) return null;
   return {
     metadata: publicKey,
     name: decoded.data.name,
