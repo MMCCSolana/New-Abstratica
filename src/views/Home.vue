@@ -7,8 +7,8 @@
           <v-row>
             <v-col cols="12">
               <div class="text-center justify-center welcome mb-10 mt-10">
-                <h1>Welcome to {{ appName }}, est 2021</h1>
-                <div class="text-center justify-center">est. 2021</div>
+                <h1>Welcome to {{ appName }}</h1>
+                <div class="text-center justify-center established-date">est. 2021</div>
               </div>
             </v-col>
           </v-row>
@@ -116,5 +116,10 @@ export default {
   text-transform: uppercase;
   padding-bottom: 30px;
   font-family: "Raleway", sans-serif;
+}
+.established-date {
+  padding-top: 25px;
+  font-size: 18px; // or any size you prefer
+  font-weight: bold; // making it bolder
 }
 </style>
