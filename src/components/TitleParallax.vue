@@ -67,7 +67,7 @@ export default {
   max-width: 750px;
   text-align: center;
   font-size: 48px;
-  font-weight: 300;
+  font-weight: 500;
   line-height: 70px;
   text-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   margin-left: auto;
