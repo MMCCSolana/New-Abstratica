@@ -102,7 +102,7 @@ export default {
   },
   computed: {
     srcUrl() {
-      return this.ready ? this.erc?.image : "";
+      return `/public/ogimages/${this.metadata}.jpg`;
     },
   },
   methods: {
