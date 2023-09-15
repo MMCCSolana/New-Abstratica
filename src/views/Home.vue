@@ -8,6 +8,7 @@
             <v-col cols="12">
               <div class="text-center justify-center welcome mb-10 mt-10">
                 <h1>Welcome to {{ appName }}, est 2021</h1>
+                <div class="text-center justify-center">est. 2021</div>
               </div>
             </v-col>
           </v-row>
