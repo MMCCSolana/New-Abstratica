@@ -94,7 +94,7 @@
                           small
                           outlined
                           link
-                          :href="solScanAccount(metadata)"
+                          :href="solScanAccount(mint)"
                           target="_blank"
                         >
                           Solscan
@@ -338,7 +338,7 @@ export default {
       this.loaded = true;
     },
     solScanAccount(url) {
-      return getSolscanUrl(url);
+      return getSolscanUrl(url, true);
     },
 
     async loadMeta() {

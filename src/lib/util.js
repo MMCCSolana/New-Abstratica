@@ -1,5 +1,6 @@
 import { network } from "./connection";
 const SolscanTemplate = "https://solscan.io/account/{id}?";
+const solscanTokenTemplate = "https://solscan.io/token/{id}?";
 
 export const SolDecimals = 9;
 export function toDisplayAmount(amount, decimals) {
@@ -24,8 +25,9 @@ export function sleep(milliseconds) {
   });
 }
 
-export function getSolscanUrl(id) {
-  if (network === "mainnet-beta") {
+export function getSolscanUrl(id, nft) {
+  if (network === "mainnet-beta" || !network) {
+    if (nft) return solscanTokenTemplate.replace("{id}", id);
     return SolscanTemplate.replace("{id}", id);
   }
   return SolscanTemplate.replace("{id}", id) + `cluster=${network}`;
