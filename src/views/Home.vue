@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <TitleParallax text="AI generative arts on Solana" />
+    <TitleParallax text="The first generative AI art project on Solana. Created Aug 2021" />
     <v-card-text class="py-0 pl-0 pr-0">
       <div class="containerbg">
         <v-container fluid>
