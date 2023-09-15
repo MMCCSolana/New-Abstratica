@@ -107,28 +107,28 @@ export default {
   },
   methods: {
     ...mapMutations(["removeNewMeta"]),
-    async tryGetErcFromCache(src) {
-      const id = src.substring(src.lastIndexOf("/") + 1);
-      const erc = localStorage.getItem(id);
-      if (erc) {
-        // console.log("found from cache");
-        return JSON.parse(erc);
-      }
-      const { data } = await retry(
-        async () => {
-          return await axios.get(src);
-        },
-        {
-          minTimeout: 500,
-          factor: 1.5,
-          onRetry: () => {
-            // logger.logError(e, ``);
-          },
-        }
-      );
-      localStorage.setItem(id, JSON.stringify(data));
-      return data;
-    },
+//    async tryGetErcFromCache(src) {
+//      const id = src.substring(src.lastIndexOf("/") + 1);
+//      const erc = localStorage.getItem(id);
+//      if (erc) {
+//        // console.log("found from cache");
+//        return JSON.parse(erc);
+//      }
+//      const { data } = await retry(
+//        async () => {
+//          return await axios.get(src);
+//        },
+//        {
+//          minTimeout: 500,
+//          factor: 1.5,
+//          onRetry: () => {
+//            // logger.logError(e, ``);
+//          },
+//        }
+//      );
+//      localStorage.setItem(id, JSON.stringify(data));
+//      return data;
+//    },
     onDetailClicked() {
       if (!this.loaded) return;
       if (this.isNew) {
