@@ -42,7 +42,7 @@ export async function getMetadata(connection, publicKey) {
   // do not display other NFT
   // if (decoded.updateAuthority.toBase58() !== creator.toBase58()) return null;
   if (
-    creator.toBase58() !== "absF5t1MP7dXFhbgUgaTi7ffJM2WhBg1cmrY5s7h3By" &&
+    creator.toBase58() !== "absF5t1MP7dXFhbgUgaTi7ffJM2WhBg1cmrY5s7h3By" ||
     decoded.updateAuthority.toBase58() !==
       "aiARTU57mSpdVJ4f1eGFDpWTrPzQr6xoKubCLcJ9zUz"
   )
