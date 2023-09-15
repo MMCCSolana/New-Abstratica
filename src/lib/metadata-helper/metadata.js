@@ -47,7 +47,6 @@ export async function getMetadata(connection, publicKey) {
       "aiARTU57mSpdVJ4f1eGFDpWTrPzQr6xoKubCLcJ9zUz"
   )
     return null;
-  console.log({name:decoded.data.name, updateAuth: decoded.updateAuthority.toBase58(), creator: creator.toBase58()})
   return {
     metadata: publicKey,
     name: decoded.data.name,
