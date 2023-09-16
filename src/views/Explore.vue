@@ -89,11 +89,6 @@ import debounce from "debounce";
 export default {
   
 
-computed: {
-    totalImagesCount() {
-        return this.abs.length;
-    },
-},
 
 methods: {
     onImageLoaded() {
@@ -117,9 +112,7 @@ components: { ArtPreview, AppFooter, TitleParallax },
     };
   },
   created() {
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 2000);
+      
     this.filterDebounce = debounce(this.setNameFilter, 700, false);
   },
   // watch: {
@@ -153,11 +146,6 @@ components: { ArtPreview, AppFooter, TitleParallax },
     },
   },
   
-computed: {
-    totalImagesCount() {
-        return this.abs.length;
-    },
-},
 
 methods: {
     setNameFilter() {
