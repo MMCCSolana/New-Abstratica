@@ -174,9 +174,9 @@ export default {
 
 .loading-container {
     font-size: 24px;
-    font-weight: 200;
+    font-weight: 300;
     display: flex;
-    padding-bottom: 100px;
+    padding-bottom: 200px;
     justify-content: center;
     align-items: center;
     height: 100vh;
