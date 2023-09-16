@@ -78,6 +78,7 @@
   </v-card>
 </template>
 
+
 <script>
 import ArtPreview from "../components/ArtPreview.vue";
 import AppFooter from "../components/AppFooter.vue";
@@ -87,24 +88,10 @@ import { mapState, mapGetters } from "vuex";
 import debounce from "debounce";
 
 export default {
-  
-
-
-methods: {
-    onImageLoaded() {
-        this.isLoading = false;
-    },
-    onImageLoaded() {
-        this.isLoading = false;
-    }
-    },
-},
-
-components: { ArtPreview, AppFooter, TitleParallax },
+  components: { ArtPreview, AppFooter, TitleParallax },
   props: {},
   data() {
     return {
-      loadedImagesCount: 0,
       isLoading: true,
       sortOptions: ["Random", "Rank: Low to High", "Rank: High to Low"],
       sortBy: "Random",
@@ -113,14 +100,8 @@ components: { ArtPreview, AppFooter, TitleParallax },
     };
   },
   created() {
-      
     this.filterDebounce = debounce(this.setNameFilter, 700, false);
   },
-  // watch: {
-  //   nameFilter(value) {
-  //     this.filterDebounce();
-  //   },
-  // },
   computed: {
     ...mapGetters(["metaReady"]),
     ...mapState({
@@ -132,7 +113,6 @@ components: { ArtPreview, AppFooter, TitleParallax },
           !this.nameFilterRebounced ||
           a.name.toLowerCase().includes(this.nameFilterRebounced.toLowerCase())
       );
-
       if (this.sortBy === "Rank: High to Low") {
         cloned.sort((a, b) => a.rank - b.rank);
         return cloned;
@@ -146,9 +126,7 @@ components: { ArtPreview, AppFooter, TitleParallax },
       return cloned;
     },
   },
-  
-
-methods: {
+  methods: {
     onImageLoaded() {
         this.isLoading = false;
     },
@@ -161,6 +139,7 @@ methods: {
   },
 };
 </script>
+
 <style scoped lang="scss">
 @import "../scss/global.scss";
 @import "../scss/variables.scss";
