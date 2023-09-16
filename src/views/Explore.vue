@@ -173,7 +173,10 @@ export default {
 
 
 .loading-container {
+    font-size: 24px;
+    font-weight: 100;
     display: flex;
+    padding-bottom: 50px;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -184,8 +187,8 @@ export default {
     border: 16px solid #f3f3f3;
     border-top: 16px solid #3498db;
     border-radius: 50%;
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     animation: spin 2s linear infinite;
     position: absolute;
     left: 50%;
