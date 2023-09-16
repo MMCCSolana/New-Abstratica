@@ -1,5 +1,10 @@
 <template>
 
+<div v-if="isLoading" class="loading-container">
+    <div class="loading-spinner"></div>
+    <p>Loading...</p>
+</div>
+
   <v-card>
     <TitleParallax text="Abstratica Gallery" />
     <v-card-text class="py-0 pl-0 pr-0">
@@ -29,13 +34,7 @@
               ></v-select>
             </v-col>
           </v-row>
-          
-<div v-if="isLoading" class="loading-container">
-    <div class="loading-spinner"></div>
-    <p>Loading...</p>
-</div>
-
-<v-row
+          <v-row
             v-if="sortedAbs.length > 0"
             class="mt-0 mb-10 ml-0 mr-0 ml-lg-4 mr-lg-4 ml-xl-4 mr-xl-4"
           >
@@ -55,6 +54,7 @@
                 transition="fade-transition"
               >
                 <ArtPreview
+@imageLoaded="onImageLoaded"
                   :src="item.uri"
                   :name="item.name"
                   :mint="item.mint"
@@ -86,9 +86,21 @@ import { mapState, mapGetters } from "vuex";
 import debounce from "debounce";
 
 export default {
-  components: { ArtPreview, AppFooter, TitleParallax },
+  
+methods: {
+    onImageLoaded() {
+        this.loadedImagesCount += 1;
+        if (this.loadedImagesCount === this.totalImagesCount) {
+            this.isLoading = false;
+        }
+    },
+},
+
+components: { ArtPreview, AppFooter, TitleParallax },
   props: {},
   data() {
+    loadedImagesCount: 0,
+    totalImagesCount: this.abs.length,
     return {
       isLoading: true,
       sortOptions: ["Random", "Rank: Low to High", "Rank: High to Low"],
