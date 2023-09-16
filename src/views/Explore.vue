@@ -93,6 +93,9 @@ export default {
 methods: {
     onImageLoaded() {
         this.isLoading = false;
+    },
+    onImageLoaded() {
+        this.isLoading = false;
     }
     },
 },
@@ -146,6 +149,9 @@ components: { ArtPreview, AppFooter, TitleParallax },
   
 
 methods: {
+    onImageLoaded() {
+        this.isLoading = false;
+    },
     setNameFilter() {
       this.nameFilterRebounced = this.nameFilter;
     },
