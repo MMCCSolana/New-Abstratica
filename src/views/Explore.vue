@@ -1,4 +1,5 @@
 <template>
+
   <v-card>
     <TitleParallax text="Abstratica Gallery" />
     <v-card-text class="py-0 pl-0 pr-0">
@@ -28,7 +29,13 @@
               ></v-select>
             </v-col>
           </v-row>
-          <v-row
+          
+<div v-if="isLoading" class="loading-container">
+    <div class="loading-spinner"></div>
+    <p>Loading images from Arweave...</p>
+</div>
+
+<v-row
             v-if="sortedAbs.length > 0"
             class="mt-0 mb-10 ml-0 mr-0 ml-lg-4 mr-lg-4 ml-xl-4 mr-xl-4"
           >
@@ -48,6 +55,7 @@
                 transition="fade-transition"
               >
                 <ArtPreview
+@imageLoaded="onImageLoaded"
                   :src="item.uri"
                   :name="item.name"
                   :mint="item.mint"
@@ -70,6 +78,7 @@
   </v-card>
 </template>
 
+
 <script>
 import ArtPreview from "../components/ArtPreview.vue";
 import AppFooter from "../components/AppFooter.vue";
@@ -83,6 +92,7 @@ export default {
   props: {},
   data() {
     return {
+      isLoading: true,
       sortOptions: ["Random", "Rank: Low to High", "Rank: High to Low"],
       sortBy: "Random",
       nameFilter: null,
@@ -92,11 +102,6 @@ export default {
   created() {
     this.filterDebounce = debounce(this.setNameFilter, 700, false);
   },
-  // watch: {
-  //   nameFilter(value) {
-  //     this.filterDebounce();
-  //   },
-  // },
   computed: {
     ...mapGetters(["metaReady"]),
     ...mapState({
@@ -108,7 +113,6 @@ export default {
           !this.nameFilterRebounced ||
           a.name.toLowerCase().includes(this.nameFilterRebounced.toLowerCase())
       );
-
       if (this.sortBy === "Rank: High to Low") {
         cloned.sort((a, b) => a.rank - b.rank);
         return cloned;
@@ -123,6 +127,9 @@ export default {
     },
   },
   methods: {
+    onImageLoaded() {
+        this.isLoading = false;
+    },
     setNameFilter() {
       this.nameFilterRebounced = this.nameFilter;
     },
@@ -132,6 +139,7 @@ export default {
   },
 };
 </script>
+
 <style scoped lang="scss">
 @import "../scss/global.scss";
 @import "../scss/variables.scss";
@@ -162,4 +170,37 @@ export default {
 .empty-row {
   height: 300px;
 }
+
+
+.loading-container {
+    font-size: 24px;
+    font-weight: 300;
+    display: flex;
+    padding-bottom: 200px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.loading-spinner {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
+
 </style>
