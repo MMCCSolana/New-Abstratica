@@ -92,10 +92,8 @@ export default {
 
 methods: {
     onImageLoaded() {
-        this.loadedImagesCount += 1;
-        if (this.loadedImagesCount === this.totalImagesCount) {
-            this.isLoading = false;
-        }
+        this.isLoading = false;
+    }
     },
 },
 
