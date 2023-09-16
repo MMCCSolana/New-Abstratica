@@ -1,10 +1,5 @@
 <template>
 
-<div v-if="isLoading" class="loading-container">
-    <div class="loading-spinner"></div>
-    <p>Loading...</p>
-</div>
-
   <v-card>
     <TitleParallax text="Abstratica Gallery" />
     <v-card-text class="py-0 pl-0 pr-0">
@@ -34,7 +29,13 @@
               ></v-select>
             </v-col>
           </v-row>
-          <v-row
+          
+<div v-if="isLoading" class="loading-container">
+    <div class="loading-spinner"></div>
+    <p>Loading...</p>
+</div>
+
+<v-row
             v-if="sortedAbs.length > 0"
             class="mt-0 mb-10 ml-0 mr-0 ml-lg-4 mr-lg-4 ml-xl-4 mr-xl-4"
           >
