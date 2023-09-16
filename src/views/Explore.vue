@@ -1,4 +1,10 @@
 <template>
+
+<div v-if="isLoading" class="loading-container">
+    <div class="loading-spinner"></div>
+    <p>Loading...</p>
+</div>
+
   <v-card>
     <TitleParallax text="Abstratica Gallery" />
     <v-card-text class="py-0 pl-0 pr-0">
@@ -83,6 +89,7 @@ export default {
   props: {},
   data() {
     return {
+      isLoading: true,
       sortOptions: ["Random", "Rank: Low to High", "Rank: High to Low"],
       sortBy: "Random",
       nameFilter: null,
@@ -90,6 +97,9 @@ export default {
     };
   },
   created() {
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 2000);
     this.filterDebounce = debounce(this.setNameFilter, 700, false);
   },
   // watch: {
@@ -162,4 +172,28 @@ export default {
 .empty-row {
   height: 300px;
 }
+
+<style scoped>
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.loading-spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
+
 </style>
