@@ -19,8 +19,10 @@ export default new Vuex.Store({
     connectedWallet: null,
     newMeta: [],
     newMintBadge: 0,
+    loading: true,
   },
   getters: {
+    isLoading: (s) => s.loading,
     metaReady: (s) => s.metaReady,
     minted: (state) => {
       return state.abs?.length || 0;
@@ -33,6 +35,9 @@ export default new Vuex.Store({
     isConnected: (s) => !!s.connectedWallet,
   },
   mutations: {
+    setLoading(state, payload) {
+      state.loading = payload;
+    },
     metaReady(state) {
       state.metaReady = true;
     },
@@ -145,6 +150,7 @@ export default new Vuex.Store({
     },
     // main load data
     async loadAbs({ commit, dispatch }) {
+      commit("setLoading", true);
       // const abs2 = await loadAbsOptimized();
       // return;
       const abs = (await loadAbsOptimized())
@@ -184,6 +190,7 @@ export default new Vuex.Store({
       commit("setRarity", rarity);
       commit("setAbs", abs);
       commit("metaReady");
+      commit("setLoading", false);
     },
 
     calculateRarityData(context, metadata) {

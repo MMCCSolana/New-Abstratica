@@ -1,7 +1,10 @@
 <template>
   <v-card>
     <TitleParallax text="Abstratica Gallery" />
-    <v-card-text class="py-0 pl-0 pr-0">
+    <v-container fluid v-if="isLoading">
+      <LoadingComponent />
+    </v-container>
+    <v-card-text class="py-0 pl-0 pr-0" v-else>
       <div class="containerbg">
         <v-container fluid>
           <v-row class="mt-1">
@@ -56,7 +59,7 @@
               </v-lazy>
             </v-col>
           </v-row>
-          <v-row no-gutters class="empty-row" v-else>
+          <v-row v-else no-gutters class="empty-row">
             <v-col v-show="metaReady" align-self="center">
               <div class="text-center justify-center page-message">
                 <h1>Be the first to own Abstratica.</h1>
@@ -73,16 +76,23 @@
 <script>
 import ArtPreview from "../components/ArtPreview.vue";
 import AppFooter from "../components/AppFooter.vue";
+import LoadingComponent from "../components/LoadingComponent.vue";
 import TitleParallax from "../components/TitleParallax.vue";
 import { createResourceUrl, shuffleArray } from "../lib/util";
 import { mapState, mapGetters } from "vuex";
 import debounce from "debounce";
 
 export default {
-  components: { ArtPreview, AppFooter, TitleParallax },
+  components: {
+    ArtPreview,
+    AppFooter,
+    TitleParallax,
+    LoadingComponent
+  },
   props: {},
   data() {
     return {
+      total: 4199,
       sortOptions: ["Random", "Rank: Low to High", "Rank: High to Low"],
       sortBy: "Random",
       nameFilter: null,
@@ -98,7 +108,7 @@ export default {
   //   },
   // },
   computed: {
-    ...mapGetters(["metaReady"]),
+    ...mapGetters(["metaReady", "isLoading"]),
     ...mapState({
       abs: (s) => s.abs || [],
     }),
