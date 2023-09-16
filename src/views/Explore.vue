@@ -107,9 +107,8 @@ methods: {
 components: { ArtPreview, AppFooter, TitleParallax },
   props: {},
   data() {
-    loadedImagesCount: 0,
-    
     return {
+      loadedImagesCount: 0,
       isLoading: true,
       sortOptions: ["Random", "Rank: Low to High", "Rank: High to Low"],
       sortBy: "Random",
