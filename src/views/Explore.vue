@@ -173,7 +173,7 @@ export default {
   height: 300px;
 }
 
-<style scoped>
+
 .loading-container {
     display: flex;
     justify-content: center;
