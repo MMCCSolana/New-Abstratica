@@ -140,7 +140,7 @@ export default {
       });
     },
     onLoaded() {
-      this.loaded = true;
+      this.loaded = true; this.$emit('imageLoaded');
     },
     onError() {
       // reload
